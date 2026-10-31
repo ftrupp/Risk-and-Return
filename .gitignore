@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pkl
+*.pickle
+data/
+outputs/
+*.log
+# Retired local downloads; retained on the original workstation, not in releases.
+/data_fetcher.py
+/financial_instruments.py
+/links_indices.json
