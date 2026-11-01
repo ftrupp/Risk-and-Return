@@ -1,4 +1,6 @@
-"""Execute the two reviewed project notebooks in fresh namespaces, without network.
+"""Execute the two offline demonstration notebooks without network.
+
+The complete original studies are never executed or rewritten by this script.
 
 No kernel/server is started. These notebooks use ordinary Python cells only.
 By default outputs are validated in memory; --write saves freshly executed outputs.
@@ -74,7 +76,7 @@ def main():
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     for language in ("EN", "ES"):
-        execute(root / f"riskandreturn-{language}.ipynb", args.write)
+        execute(root / f"riskandreturn-offline-{language}.ipynb", args.write)
 
 
 if __name__ == "__main__":

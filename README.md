@@ -1,14 +1,28 @@
 # Risk and Return
 
-An offline Python project for comparing portfolio construction rules under explicit
-data, timing and transaction-cost assumptions. The reusable CLI and the English and
-Spanish notebooks run the **same calculation engine**.
+An educational portfolio study with the complete original notebooks in English
+and Spanish, plus a companion offline Python engine for reproducible experiments.
+The original studies and the smaller synthetic examples are separate files.
 
 The problem is not just finding weights that look good in a historical sample.
 It is making the estimation window, investable universe, constraints and subsequent
 portfolio path consistent enough to evaluate those weights honestly.
 
-## What it does
+## Original notebooks
+
+- [Complete English notebook](riskandreturn-EN.ipynb): **80 cells**.
+- [Notebook completo en español](riskandreturn-ES.ipynb): **92 celdas**.
+
+Both retain their original explanations, code, experiments, charts and saved results.
+They were restored exactly from the version preceding the offline-engine release.
+Their original helper modules are also included. Rerunning the studies requires
+their original dependencies and historical data; the saved outputs have not been
+regenerated or newly validated as part of this restoration.
+
+The offline examples below supplement these studies. They do not replace them,
+and passing the offline checks does not certify execution of the complete studies.
+
+## What the companion engine does
 
 - Compares equal weights, capped minimum volatility and capped maximum Sharpe.
 - Fits weights using training data only; enters at the next observed session close.
@@ -20,8 +34,9 @@ portfolio path consistent enough to evaluate those weights honestly.
 - Exports weights, trajectories, metrics, costs, data-quality flags and input hashes.
 - Includes a deterministic synthetic example that runs without network access.
 
-There are no broker connections, orders, account credentials or downloads. This is
-a research and teaching project, not a trading system or evidence of alpha.
+The companion engine has no broker connections, orders, account credentials or
+downloads. The original notebooks retain their historical data-loading helpers.
+This is a research and teaching project, not a trading system or evidence of alpha.
 
 ## Install and run
 
@@ -105,16 +120,17 @@ independence, normality or stability of returns.
 
 ## Reproducible demonstrations and checks
 
-[English notebook](riskandreturn-EN.ipynb) · [Notebook en español](riskandreturn-ES.ipynb)
+[Offline example in English](riskandreturn-offline-EN.ipynb) · [Ejemplo offline en español](riskandreturn-offline-ES.ipynb)
 
-Both notebooks are compact, run sequentially from a fresh namespace, and contain
-only freshly generated synthetic demonstration outputs. No private paths or market
-cache is needed. For interactive use, install `python -m pip install -e ".[notebook]"`.
+These two additional examples use the same calculation engine as the CLI. Each
+has 15 cells, including 7 code cells, and contains synthetic demonstration outputs.
+They run sequentially without a market cache. For interactive use, install
+`python -m pip install -e ".[notebook]"`.
 
 ```sh
 python -m unittest discover -s tests -v
-python scripts/execute_notebooks.py            # Validate and execute both, network blocked
-python scripts/execute_notebooks.py --write    # Regenerate their demonstration outputs
+python scripts/execute_notebooks.py            # Run the two offline examples only
+python scripts/execute_notebooks.py --write    # Regenerate only offline example outputs
 ```
 
 Two analytic checks make the meaning of the results concrete:
@@ -125,7 +141,7 @@ Two analytic checks make the meaning of the results concrete:
   wealth from 1,000 is `1,000 → 1,250 → 1,750`: total return is 75%.
 
 These are correctness checks, not investment results. The synthetic strategy
-comparison is shown in the notebooks and can be regenerated with the CLI; its
+comparison is shown in the offline examples and can be regenerated with the CLI; its
 ordering has no empirical significance. Tests also cover caps, optimizer failure,
 fees, label/price-scale invariance, chronology, metadata and missing data.
 
@@ -149,8 +165,9 @@ its existing [CC0-1.0 license](LICENSE). Standard mean-variance methods and thir
 libraries are not claimed as original algorithms. Method references are documented
 in [REFERENCES.md](docs/REFERENCES.md).
 
-The old in-notebook calculations, live download helpers and large pickle/checkpoint
-files are retired from the current tree. Historical Git commits are preserved; the
-old data may therefore remain in repository history. They are not a supported dataset
-or covered by a new redistribution claim. [Migration notes](docs/MIGRATION.md) explain
-the corrections and what changed.
+The complete original notebooks and their helper modules remain in the current tree.
+Large pickle files and notebook checkpoints remain excluded from the tracked tree;
+existing local copies and Git history are preserved. The historical data are not
+certified by the companion engine or covered by a new redistribution claim.
+[Migration notes](docs/MIGRATION.md) distinguish the original studies, the new
+engine and their separate validation status.

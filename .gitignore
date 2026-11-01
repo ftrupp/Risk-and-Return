@@ -18,7 +18,3 @@ dist/
 data/
 outputs/
 *.log
-# Retired local downloads; retained on the original workstation, not in releases.
-/data_fetcher.py
-/financial_instruments.py
-/links_indices.json
